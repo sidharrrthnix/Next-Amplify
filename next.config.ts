@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   compress: true,
   images: {
     unoptimized: true,
-    domains: ["d39g4sikypkgez.amplifyapp.com"],
+    domains: ["main.dm40kmgbmy3ut.amplifyapp.com"],
     remotePatterns: [
       {
         protocol: "https",
