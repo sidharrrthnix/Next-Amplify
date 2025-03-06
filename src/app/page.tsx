@@ -1,101 +1,156 @@
-import Image from "next/image";
+import { config } from '@/lib/env';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Hero Section */}
+      <section className="py-20 px-6 text-center max-w-5xl mx-auto">
+        <div className="relative w-32 h-32 mx-auto mb-8">
+          <Image
+            src="/logo.png"
+            alt="AWS Amplify Logo"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <h1 className="text-4xl font-bold text-slate-800 mb-6">
+          {config.NEXT_PUBLIC_APP_NAME}
+        </h1>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link
+            href="/auth/signin"
+            className="px-6 py-3 rounded-md bg-[#41E2BA] text-white font-medium hover:bg-[#35c5a1] transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg"
+          >
+            Get Started
+          </Link>
+          <Link
+            href="/docs"
+            className="px-6 py-3 rounded-md border border-[#41E2BA] text-[#41E2BA] font-medium hover:bg-[#41E2BA]/10 transition-all duration-300"
+          >
+            View Docs
+          </Link>
+        </div>
+        <div className="mt-4 bg-slate-100 inline-block px-3 py-1 rounded text-sm text-slate-600">
+          Environment: {config.NEXT_PUBLIC_ENVIRONMENT}
+        </div>
+      </section>
+
+      {/* Rendering Examples Section */}
+      <section className="py-16 px-6 bg-slate-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-800 mb-12 text-center">
+            Rendering Strategies
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* SSR Component Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                Server-Side Rendering (SSR)
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Data fetched on each request. Good for pages that need fresh data.
+              </p>
+              <Link
+                href="/ssr"
+                className="block w-full py-3 px-4 bg-[#41E2BA] text-white text-center rounded-md hover:bg-[#35c5a1] transition-colors"
+              >
+                View SSR Example
+              </Link>
+            </div>
+
+            {/* SSG Component Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                Static Site Generation (SSG)
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Generated at build time. Great for content that doesn&apos;t change often.
+              </p>
+              <Link
+                href="/ssg"
+                className="block w-full py-3 px-4 bg-[#41E2BA] text-white text-center rounded-md hover:bg-[#35c5a1] transition-colors"
+              >
+                View SSG Example
+              </Link>
+            </div>
+
+            {/* ISR Component Card */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                Incremental Static Regeneration (ISR)
+              </h3>
+              <p className="text-slate-600 mb-6">
+                Static pages that revalidate after a specified interval.
+              </p>
+              <Link
+                href="/isr"
+                className="block w-full py-3 px-4 bg-[#41E2BA] text-white text-center rounded-md hover:bg-[#35c5a1] transition-colors"
+              >
+                View ISR Example
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* API Examples Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-800 mb-12 text-center">
+            API Endpoints
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                Health Check
+              </h3>
+              <p className="text-slate-600 mb-4">
+                Check if your application is running properly.
+              </p>
+              <a
+                href="/api/health"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-[#41E2BA]/10 p-4 rounded-md overflow-x-auto text-[#41E2BA] hover:bg-[#41E2BA]/20 transition-colors"
+              >
+                <code className="font-mono">
+                  GET /api/health
+                </code>
+              </a>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">
+                Current Time
+              </h3>
+              <p className="text-slate-600 mb-4">
+                Get the current server time.
+              </p>
+              <a
+                href="/api/time"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-[#41E2BA]/10 p-4 rounded-md overflow-x-auto text-[#41E2BA] hover:bg-[#41E2BA]/20 transition-colors"
+              >
+                <code className="font-mono">
+                  GET /api/time
+                </code>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-slate-100 text-center">
+        <p className="text-slate-600">
+          © {new Date().getFullYear()} {config.NEXT_PUBLIC_APP_NAME}. Built with Next.js and AWS Amplify.
+        </p>
       </footer>
-    </div>
+    </main>
   );
 }
