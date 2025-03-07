@@ -9,7 +9,7 @@ export default function HomePage() {
       <section className="py-20 px-6 text-center max-w-5xl mx-auto">
         <div className="relative w-32 h-32 mx-auto mb-8">
           <Image
-            src="/logo.png"
+            src="/amplify-logo.png"
             alt="AWS Amplify Logo"
             fill
             className="object-contain"

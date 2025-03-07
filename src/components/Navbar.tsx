@@ -15,7 +15,7 @@ export default function Navbar() {
             {/* Logo placeholder - replace with your actual logo */}
             <div className="relative w-8 h-8">
               <Image
-                src="/logo.png"
+                src="/amplify-logo.png"
                 alt="Amplify Logo"
                 width={32}
                 height={32}

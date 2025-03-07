@@ -5,9 +5,11 @@ import { Providers } from "../components/Providers";
 import "./globals.css";
 
 export const metadata = {
-  title: "AI Aided Consultancy Platform",
-  description:
-    "Leverage AI-driven insights and consultancy to transform your business. Our platform provides tailored AI solutions and expert analyses to drive growth.",
+  title: "Next-Amplify",
+  description: "Deploy Next.js applications seamlessly with AWS Amplify.",
+  icons: {
+    icon: "/amplify-logo.png",
+  }
 };
 
 export default function RootLayout({
