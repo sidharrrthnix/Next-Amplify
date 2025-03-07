@@ -44,7 +44,7 @@ async function getData() {
 
 export default async function SSRPage() {
   const data = await getData();
-
+  console.log('server logs')
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-16 px-6">
       <div className="max-w-4xl mx-auto">
